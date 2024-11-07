@@ -2,10 +2,12 @@
 
 @foreach(var item in Model)
 {
+    string bUrl = $"/Blog/{item.Alias}-{item.BlogId}.html";
+
     <div class="swiper-slide">
         <div class="blog-item">
             <div class="blog-img img-zoom-effect">
-                <a href="blog-detail-left-sidebar.html">
+                <a href="@bUrl">
                     <img class="img-full" src="@item.Image" alt="Blog Image">
                 </a>
             </div>

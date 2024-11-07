@@ -23,7 +23,7 @@ namespace Harmic.Controllers
         [Route("/product/{alias}-{id}.html")]
 
         public async Task<IActionResult> Details(int? id)
-        {
+            {
             if(id == null || _context.TbProducts == null)
             {
                 return NotFound();
