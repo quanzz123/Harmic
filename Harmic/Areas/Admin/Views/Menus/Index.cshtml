@@ -32,7 +32,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Thêm mới</h3>
+                            <h3 class="card-title"><a asp-action="Create">Thêm mới</a></h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -75,7 +75,7 @@
                                             <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
                                             <td><a asp-action="Edit" asp-route-id="@item.MenuId" class="btn btn-primary">Sủa</a></td>
                                             <td><a asp-action="Details" asp-route-id="@item.MenuId" class="btn btn-info">Chi tiết</a></td>
-                                            <td><a asp-action="Edit" asp-route-id="@item.MenuId" class="btn btn-danger" >Xoá</a></td>
+                                            <td><a asp-action="Delete" asp-route-id="@item.MenuId" class="btn btn-danger" >Xoá</a></td>
                                             
                                         </tr>
                                     }
