@@ -7,9 +7,12 @@
 
 /* global moment:false, Chart:false, Sparkline:false */
 
+
+
 $(function () {
   'use strict'
 
+    
   // Make the dashboard widgets sortable Using jquery UI
   $('.connectedSortable').sortable({
     placeholder: 'sort-highlight',
