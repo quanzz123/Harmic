@@ -63,6 +63,10 @@ namespace Harmic.Areas.Admin.Controllers
             {
                 tbProduct.Alias = Harmic.Utilities.Function.TitleSlugGenerationAlias(tbProduct.Title);
                 _context.Add(tbProduct);
+                // lưu ngày tạo
+                tbProduct.CreatedDate = DateTime.Now;
+                // sản phảm thì chưa được chỉnh sủa
+                tbProduct.ModifiedDate = null;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -103,6 +107,7 @@ namespace Harmic.Areas.Admin.Controllers
             {
                 try
                 {
+                    tbProduct.ModifiedDate = DateTime.Now;
                     _context.Update(tbProduct);
                     await _context.SaveChangesAsync();
                 }

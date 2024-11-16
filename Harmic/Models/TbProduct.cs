@@ -29,7 +29,7 @@ public partial class TbProduct
 
     public string? CreatedBy { get; set; }
 
-    public DateTime? ModifiedDate { get; set; } = DateTime.Now;
+    public DateTime? ModifiedDate { get; set; } 
 
     public string? ModifiedBy { get; set; }
 

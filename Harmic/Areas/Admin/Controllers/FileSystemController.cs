@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
-namespace PTUDW.Areas.Admin.Controllers
+namespace Harmic.Areas.Admin.Controllers
 {
+   
+
     [Area("Admin")]
     [Route("/Admin/el-finder-file-system")]
     public class FileSystemController : Controller
@@ -44,7 +46,7 @@ namespace PTUDW.Areas.Admin.Controllers
         {
             // Thư mục gốc lưu trữ là wwwwroot/files (đảm bảo có tạo thư mục này)
             string pathroot = "files";
-
+            
             var driver = new FileSystemDriver();
 
             string absoluteUrl = UriHelper.BuildAbsolute(Request.Scheme, Request.Host);
@@ -55,7 +57,9 @@ namespace PTUDW.Areas.Admin.Controllers
 
             // https://localhost:5001/files/
             string url = $"/{pathroot}/";
-            string urlthumb = $"{uri.Scheme}://Admin/el-finder-file-system/thumb/";
+            /*string urlthumb = $"{uri.Scheme}://Admin/el-finder-file-system/thumb/";*/
+            string urlthumb = $"{Request.Scheme}://{Request.Host}/Admin/el-finder-file-system/thumb/";
+
 
 
             var root = new RootVolume(rootDirectory, url, urlthumb)
@@ -78,5 +82,8 @@ namespace PTUDW.Areas.Admin.Controllers
                 MimeDetect = MimeDetectOption.Internal
             };
         }
+
+        
+
     }
 }

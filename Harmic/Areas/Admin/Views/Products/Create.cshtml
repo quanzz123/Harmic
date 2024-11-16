@@ -69,30 +69,68 @@
                                     <!--btn group-->
                                         <input type="text" class="form-control " id="file_input" asp-for="Image" aria-describedby="button-addon2" />
                                    </div>
-                                </div> 
-                                    
-                                @* <script>
-                                    function openDialog() {
-                                        document.getElementById("file_input").click();
-                                    }
-                                </script> *@
-
+                                </div>
+                                @* Mô tả *@
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label">Mô tả</label>
+                                    <input asp-for="Description" class="form-control" />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                                 <!-- phần chi tiết sản phẩm-->
                                  <div class="form-group">
                                     <label asp-for="Detail" class="control-label">Chi tiết</label>
                                     <textarea asp-for="Detail" class="form-control"></textarea>
                                     <span asp-validation-for="Detail" class="text-danger"></span>
                                 </div>
-                                @* <div class="form-group" clas="form-check">
+                                @* đơn giá *@
+                                <div class="form-group">
+                                    <label asp-for="Price" class="control-label">Đơn giá</label>
+                                    <input asp-for="Price" class="form-control" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                                @* giá giảm *@
+                                <div class="form-group">
+                                    <label asp-for="PriceSale" class="control-label"> Giảm giá</label>
+                                    <input asp-for="PriceSale" class="form-control" />
+                                    <span asp-validation-for="PriceSale" class="text-danger"></span>
+                                </div>
+                                @* số lượng *@
+                                <div class="form-group">
+                                    <label asp-for="Quantity" class="control-label">Số lượng</label>
+                                    <input asp-for="Quantity" class="form-control" />
+                                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                                </div>
+                                 @* Tồn kho *@
+                                <div class="form-group">
+                                    <label asp-for="UnitInStock" class="control-label">Tồn kho</label>
+                                    <input asp-for="UnitInStock" class="form-control" />
+                                    <span asp-validation-for="UnitInStock" class="text-danger"></span>
+                                </div>
+                                @* người tạo *@
+                                <div class="form-group">
+                                    <label asp-for="CreatedBy" class="control-label">NGười tạo</label>
+                                    <input asp-for="CreatedBy" class="form-control" />
+                                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                                </div>
+                                @* sản phẩm mới  *@
+                                <div class="form-group" clas="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="IsNew" /> Sản phẩm mới
+                                    </label>
+                                </div>
+                                @* sản phẩm bán chạy *@
+                                <div class="form-group" clas="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="IsBestSeller" /> Sản phẩm bán chạy
+                                    </label>
+                                </div>
+                               
+                                @* hiển thị *@
+                                <div class="form-group" clas="form-check">
                                     <label class="form-check-label">
                                         <input class="form-check-input" asp-for="IsActive" /> Hiển thị
                                     </label>
-                                </div>  *@
-
-                                @*   <div class=" form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Hiển thị</label>
                                 </div>
-                                </div> *@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
@@ -111,6 +149,6 @@
 </div>
 <!-- /.content-wrapper -->
 @{
-    var summerNote = new Harmic.Areas.Admin.Models.SummerNote("#Details");
+    var summerNote = new Harmic.Areas.Admin.Models.SummerNote("#Detail");
     <partial name="_SummerNote" model="summerNote" />
 }
