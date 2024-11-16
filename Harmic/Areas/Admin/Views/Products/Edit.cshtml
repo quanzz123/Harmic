@@ -70,15 +70,20 @@
                                             <button type="button" class="btn btn-success" onclick="openDialog()">Choose a picture</button>
                                         </div>
                                         <!--btn group-->
-                                        <input type="text" class="form-control " id="file_input" asp-for="Image" aria-describedby="button" />
+                                        <input type="text" class="form-control " id="file_input" asp-for="Image" aria-describedby="button-addon2" />
                                     </div>
                                 </div>
 
-                                <script>
+                                <div class="form-group">
+                                    <label asp-for="Detail" class="control-label">Chi tiết</label>
+                                    <textarea asp-for="Detail" class="form-control"></textarea>
+                                    <span asp-validation-for="Detail" class="text-danger"></span>
+                                </div>
+                               @*  <script>
                                     function openDialog() {
                                         document.getElementById("file_input").click();
                                     }
-                                </script>
+                                </script> *@
 
                                 
 
@@ -97,3 +102,7 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@{
+    var summerNote = new Harmic.Areas.Admin.Models.SummerNote("#Details");
+    <partial name="_SummerNote" model="summerNote" />
+}
