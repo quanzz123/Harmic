@@ -50,27 +50,17 @@
                                 <label for="exampleInputPassword1">Alias:</label>
                                 @Html.DisplayFor(model => model.Alias)
                             </div>
+                            
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Mô tả:</label>
-                                @Html.DisplayFor(model => model.Description)
+                                <label for="exampleInputPassword1"> chi tiết:</label>
+                                @Html.Raw(Model.Detail)
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Mức:</label>
-                                @Html.DisplayFor(model => model.Detail)
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Menucha:</label>
-                                @Html.DisplayFor(model => model.Price)
-                            </div>
+                            
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Hiện:</label>
                                 @Html.DisplayFor(model => model.IsActive)
                             </div>
-                            @* <div class="form-group" clas="form-check">
-                            <label class="form-check-label">
-                            <input class="form-check-input" asp-for="IsActive" /> Hiển thị
-                            </label>
-                            </div> *@
+                            
                             <form asp-action="Delete">
                                 <input type="hidden" asp-for="ProductId" />
                                 <input type="submit" value="Xoá" class="btn btn-danger" />
@@ -90,3 +80,7 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@{
+    var summerNote = new Harmic.Areas.Admin.Models.SummerNote("#Detail");
+    <partial name="_SummerNote" model="summerNote" />
+}

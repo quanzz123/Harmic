@@ -155,6 +155,11 @@ namespace Harmic.Areas.Admin.Controllers
             var tbProduct = await _context.TbProducts.FindAsync(id);
             if (tbProduct != null)
             {
+                // tìm kiếm bản ghi bên bảng review có khoá ngoại liên kết với productID
+                var review = _context.TbProductReviews.Where(r => r.ProductId == id);
+                if (review.Any()) {
+                    _context.TbProductReviews.RemoveRange(review);
+                }
                 _context.TbProducts.Remove(tbProduct);
             }
 
