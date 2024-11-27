@@ -27,7 +27,14 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="~/assets/css/style.css">
+    <link href="~/assets/toastr/toastr.css" rel="stylesheet"/>
 
+   @*  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> *@
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/toastr/toastr.min.js"></script>
 </head>
 
 <body>
@@ -824,7 +831,9 @@
         <!-- Scroll To Top End Here -->
 
     </div>
-
+    @RenderSection("Scrips", required: false)
+    <!-- Thêm trước các script khác -->
+    
     <!-- Global Vendor, plugins JS -->
     <!-- JS Files
     ============================================ -->

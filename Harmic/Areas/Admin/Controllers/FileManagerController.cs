@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Harmic.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Harmic.Areas.Admin.Controllers
@@ -10,6 +11,11 @@ namespace Harmic.Areas.Admin.Controllers
         [Route("/Admin/file-manager")]
         public IActionResult Index()
         {
+            //kiểm tra trạng thái đăng nhập
+            if (!Function.IsLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
     }

@@ -1,14 +1,8 @@
 ﻿@{
     ViewBag.Title = "File Manager";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
-<section class="content-wrapper">
-   
-    <div  id="elfinder"></div>
-</section>
-
-
-@section Scripts {
+}<div class="content-wrapper">
+    <div id="elfinder"></div>
     <link rel="stylesheet" href="~/admin/lib/snote/jquery.min.js" />
     <link rel="stylesheet" href="~/admin/lib/snote/bootstrap.bundle.min.js" />
     <link rel="stylesheet" href="~/admin/lib/bootstrap/dist/css/bootstrap.css" />
@@ -69,4 +63,8 @@
             $('#elfinder').elfinder(options).elfinder('instance');
         });
     </script>
-}
+</div>
+
+
+
+
