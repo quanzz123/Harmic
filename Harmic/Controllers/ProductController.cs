@@ -29,7 +29,7 @@ namespace Harmic.Controllers
             {
                 return NotFound();
             }
-            TempData["ID"] = id;
+            
             var product = await _context.TbProducts.Include(i => i.CategoryProduct)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
 
@@ -45,30 +45,36 @@ namespace Harmic.Controllers
             return View(product);
         }
         [HttpPost]
-        public IActionResult Reviews(string name, string phone, string email, string details, int productid)
+        [HttpPost]
+        public async Task<IActionResult> Reviews(string name, string phone, string email, string details, int productid)
         {
             try
             {
-                int id = (int)TempData["ID"];
-                TbProductReview productreview = new TbProductReview();
-                productreview.Name = name;
-                productreview.Phone = phone;
-                productreview.Email = email;
-                productreview.CreatedDate = DateTime.Now;
+                // Tạo đối tượng review mới
+                TbProductReview productreview = new TbProductReview
+                {
+                    Name = name,
+                    Phone = phone,
+                    Email = email,
+                    CreatedDate = DateTime.Now,
+                    Detail = details,
+                    ProductId = productid,
+                    IsActive = true // xử lý kích hoạt trạng thái nếu cần
+                };
 
-                productreview.Detail = details;
-                productreview.ProductId = id;
-                productreview.IsActive = true;// xử lí sau
-                _context.Add(productreview);
-                _context.SaveChangesAsync();
-                return Json(new { status = true }); 
-            } catch
-            {
-                return Json(new { status = false });
+                // Thêm vào DbSet và lưu vào cơ sở dữ liệu
+                _context.TbProductReviews.Add(productreview);
+                await _context.SaveChangesAsync(); // Sử dụng await để đảm bảo dữ liệu được lưu
 
+                return Json(new { status = true }); // Trả về trạng thái thành công
             }
-            
+            catch (Exception ex)
+            {
+                // Ghi log lỗi (nếu cần) và trả về trạng thái thất bại
+                return Json(new { status = false, message = ex.Message });
+            }
         }
+
 
     }
 }

@@ -26,7 +26,7 @@ namespace Harmic.Utilities
             byte[] result = md5.Hash;
             StringBuilder strbui = new StringBuilder();
             for (int i=0; i< result.Length;i++)
-            {
+           {
                 strbui.Append(result[i].ToString("x2"));
             }
             return strbui.ToString();
