@@ -69,5 +69,21 @@ namespace Harmic.Utilities
             // Trả về từ cuối cùng (thường là tên)
             return nameParts[^1];
         }
+        public static string UploadImage(IFormFile image, string folder)
+        {
+            try
+            {
+                var FullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", folder, image.FileName);
+                using (var myfile = new FileStream(FullPath, FileMode.CreateNew))
+                {
+                    image.CopyTo(myfile);
+                }
+                return image.FileName;
+            }
+            catch (Exception ex)
+            {
+                return string.Empty;
+            }
+        }
     }
 }
